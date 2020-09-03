@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/model', function () {
     
@@ -25,10 +25,19 @@ Route::get('/model', function () {
 
 });
 
-Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
+Route::middleware('auth')->group(function()
+{
 
-    Route::resource('users', 'UserController');
+    Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
 
-    Route::resource('perfils', 'PerfilController');
-    
+        Route::resource('users', 'UserController');
+        Route::resource('perfils', 'PerfilController');
+        
+        
+    });
+
 });
+
+Auth::routes();
+
+// Route::get('/home', function () {})->name('home');
