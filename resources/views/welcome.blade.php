@@ -80,7 +80,7 @@
             @endif
 
             <div class="content">
-            Inicializando o Laravel - Controle de Usuários
+            Inicializando o Laravel - Controle de Usuários - {{$helloWorld}}
                 
             </div>
         </div>

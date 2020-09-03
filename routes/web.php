@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/model', function () {
+    
+    $user = \App\User::find(1);
+    
+    return $user->perfils;
+
+});
