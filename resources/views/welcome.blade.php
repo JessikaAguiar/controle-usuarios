@@ -68,7 +68,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/admin/users') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -76,18 +76,12 @@
                             <a href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
-
-                    @guest
-                        <h1>Usuário não Logado</h1>
-                    @else
-                        <h1>Usuário logado</h1>
-                    @endguest
                 </div>
             @endif
 
             <div class="content">
-            Inicializando o Laravel - Controle de Usuários 
-                
+            <h1> Controle de Usuários </h1>
+            <h3>Criadora: Jéssika Aguiar - 2020</h3>
             </div>
         </div>
     </body>
