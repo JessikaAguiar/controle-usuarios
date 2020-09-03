@@ -23,14 +23,9 @@
 
     <div class="form-group">
         <label for="perfil">Perfil de Usuario</label>
-        <input type="text" nome="perfil" class="form-control">
-    </div>
-
-    <div class="form-group">
-        <label for="usuarios">Usuários</label>
-        <select name="user" class="form-control">
-            @foreach($users as $user)
-                <option value="{{$user->id}}">{{$user->name}}</option>
+        <select name="perfils_id" class="form-control">
+            @foreach($perfis as $perfil)
+                <option value="{{$perfil->id}}">{{$perfil->nome}}</option>
             @endforeach
         </select>
     </div>

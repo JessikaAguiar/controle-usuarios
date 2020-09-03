@@ -5,15 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Perfil;
 
 class UserController extends Controller
 {
     
     private $user;
+    private $perfil;
     
-    public function __construct(User $user)
+    public function __construct(User $user, Perfil $perfil)
     {
         $this->user = $user;
+        $this->perfil = $perfil;
+
     }
 
     public function index()
@@ -26,16 +30,16 @@ class UserController extends Controller
     public function create()
     {   
         $users = $this->user->all('id','name');
+        $perfis = $this->perfil->all('id','nome');
+        
 
-        return view('admin.users.create', compact('users'));
+        return view('admin.users.create', compact('users','perfis'));
     }
 
     public function store(Request $request)
     {
         $data = $request->all();
-
-        $user = $this->user->find($data['user']);
-        $user->create($data);
+        $user = $this->user->create($data);
 
         flash('Usuário Criado com sucesso!')->success();
         return redirect()->route('admin.users.index');

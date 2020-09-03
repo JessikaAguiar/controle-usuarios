@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Perfil;
 
 class PerfilsTableSeeder extends Seeder
 {
-
+    
     /**
      * Run the database seeds.
      *
@@ -13,7 +14,17 @@ class PerfilsTableSeeder extends Seeder
     public function run()
     {
         
-       
+        $perfils = [
+            'admin',
+            'professor',
+            'diretor'
+        ];
+        foreach($perfils as $perfil)
+        {
+            Perfil::create([
+                "nome" => $perfil
+            ]);
+        }
         
     }
 }

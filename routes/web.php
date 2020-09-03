@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+
 Route::get('/model', function () {
     
     $user = \App\User::find(1);
@@ -40,4 +41,4 @@ Route::middleware('auth')->group(function()
 
 Auth::routes();
 
-// Route::get('/home', function () {})->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

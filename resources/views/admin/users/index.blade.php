@@ -20,7 +20,7 @@
                 <td>{{$user->id}}</td>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
-                <td></td>
+                <td>{{$user->perfil->nome}}</td>
                 <td>
                     <a href="{{route('admin.users.edit', ['user' => $user->id])}}" class="btn btn-sm btn-primary">Editar</a>
                     <form action="{{route('admin.users.destroy', ['user' => $user->id])}}" method="post">
