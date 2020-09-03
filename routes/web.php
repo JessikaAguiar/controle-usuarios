@@ -15,4 +15,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+})->name('home');
+
+
+Route::get('/model', function () {
+    
+    $user = \App\User::find(1);
+    
+    return $user->perfils;
+
 });
+
+Route::middleware('auth')->group(function()
+{
+
+    Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
+
+        Route::resource('users', 'UserController');
+        Route::resource('perfils', 'PerfilController');
+        
+        
+    });
+
+});
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

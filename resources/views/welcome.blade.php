@@ -76,11 +76,17 @@
                             <a href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
+
+                    @guest
+                        <h1>Usuário não Logado</h1>
+                    @else
+                        <h1>Usuário logado</h1>
+                    @endguest
                 </div>
             @endif
 
             <div class="content">
-            Inicializando o Laravel - Controle de Usuários
+            Inicializando o Laravel - Controle de Usuários 
                 
             </div>
         </div>
