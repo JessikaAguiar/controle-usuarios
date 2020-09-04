@@ -1,13 +1,15 @@
+![Captura de tela de 2020-09-03 20-24-34](https://user-images.githubusercontent.com/61212740/92186096-a9e75e80-ee23-11ea-881a-1ff14b23a8a5.png)
+
 <h1>Controle de Usuários</h1>
 
-
-### Olá Pessoal. Me chamo Jéssika e esse o meu projeto, desenvolvido com as ferramentas:
+### Olá Pessoal. Me chamo Jéssika e esse é o meu projeto, foi desenvolvido com as ferramentas:
 - Laradok
 - Laravel
 - Composer
 - PHP
 - HTML5 / CSS3 / JS
 - Bootsteap
+![Captura de tela de 2020-09-03 20-23-53](https://user-images.githubusercontent.com/61212740/92186093-a5bb4100-ee23-11ea-950d-6bbf3b037b2f.png)
 
 ## Possui o objetivo de simular um gerenciamento de usuários, onde terá como funcionalidades, CRUDs, Views, Logins e etc.
 
