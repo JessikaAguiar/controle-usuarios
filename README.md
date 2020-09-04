@@ -2,7 +2,7 @@
 
 <h1>Controle de Usuários</h1>
 
-### Olá Pessoal. Me chamo Jéssika e esse é o meu projeto, foi desenvolvido com as ferramentas:
+### Olá Pessoal. Me chamo Jéssika e esse é o meu projeto, bem simples e com poucas funcionalidades, foi desenvolvido com as ferramentas:
 - Laradok
 - Laravel
 - Composer
