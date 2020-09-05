@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\PerfilRequest;
 use Illuminate\Http\Request;
 use App\Perfil;
 
@@ -36,8 +38,10 @@ class PerfilController extends Controller
     public function create()
     {
         $perfils = $this->perfil->all('id','nome');
+        $action = route('admin.perfils.store');
+        $method = 'POST';
 
-        return view('admin.perfils.create', compact('perfils'));
+        return view('admin.perfils.form', compact('perfils','action','method'));
         
     }
 
@@ -47,25 +51,25 @@ class PerfilController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PerfilRequest $request)
     {
-        $data = $request->all();
+        try {
+            DB::beginTransaction();
 
-        $perfil = $this->perfil->create($data);
+            $data = $request->all();
 
-        flash('Perfil Criado com sucesso!')->success();
-        return redirect()->route('admin.perfils.index');
-    }
+            $perfil = $this->perfil->create($data);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $perfil
-     * @return \Illuminate\Http\Response
-     */
-    public function show($perfil)
-    {
-        //
+            flash('Perfil Criado com sucesso!')->success();
+
+            DB::commit();
+
+            return redirect()->route('admin.perfils.index');
+        } catch (Exception $exeption) {
+            DB::rollBack();
+
+            return response()->json(['mensagem' => 'A solicitação não pode ser concluída, tente novamente mais tarde'],500);
+        };
     }
 
     /**
@@ -76,9 +80,20 @@ class PerfilController extends Controller
      */
     public function edit($perfil)
     {
-        $perfil = $this->perfil->findOrFail($perfil);
-
-        return view('admin.perfils.edit', compact('perfil'));
+        try {
+            DB::beginTransaction();
+            
+            $perfil = $this->perfil->findOrFail($perfil);
+            $action = route('admin.perfils.update',['perfil' => $perfil->id]);
+            $method = 'PUT';
+        
+            return view('admin.perfils.form', compact('perfil','action','method'));
+        }catch (Exception $exeption) {
+    
+            DB::rollBack();
+    
+            return response()->view('erros/404.blade.php');
+        };
     }
 
     /**
@@ -88,7 +103,7 @@ class PerfilController extends Controller
      * @param  int  $perfil
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $perfil)
+    public function update(PerfilRequest $request, $perfil)
     {
         $data = $request->all();
 

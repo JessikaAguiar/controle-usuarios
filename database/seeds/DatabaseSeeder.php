@@ -13,6 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(PerfilsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
-
+        
     }
 }

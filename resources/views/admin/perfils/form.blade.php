@@ -3,12 +3,17 @@
 @section('content')
 
 <h1>Criar Perfil</h1>
-<form action="{{route('admin.perfils.store')}}" method="post">
+<form action="{{$action}}" method="post">
     @csrf
+        @method($method)
     
     <div class="form-group">
         <label for="name">Nome</label>
-        <input type="text" name='nome' class="form-control">
+        <input type="text" name='nome' class="form-control" 
+        value="{{isset($perfil) ? $perfil->nome : ''}}">
+        @error('nome')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
     </div>
 
     <div class="form-group">
