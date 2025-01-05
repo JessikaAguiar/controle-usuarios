@@ -8,7 +8,7 @@
 - Composer
 - PHP
 - HTML5 / CSS3 / JS
-- Bootsteap
+- Bootstrap
 
 ![Captura de tela de 2020-09-03 20-28-01](https://user-images.githubusercontent.com/61212740/92186224-1b271180-ee24-11ea-8f79-73b9e4a7f987.png)
 
